@@ -7,16 +7,19 @@
 const http = require('http');
 const url = require('url');
 
-const server = http.createServer((req,res  )=>{
+const server = http.createServer(function(req,res ){
     //Get the url and parse it.
     const parseUrl = url.parse(req.url,true);
     //Get the pathname from parseUrl.
     const path = parseUrl.pathname;
     //Get the trimmed name here.
     const trimmedPath = path.replace(/^\/+|\/+$/g, '');
+    //Now parse the HTTP Method here.
+    const method = req.method.toLowerCase();
+    console.log('Your client pathname is : ' + trimmedPath + " And your method is " + method );
+    res.end("Welcome to our uptime monitoring application" );
     
-    res.end("Your client pathname is : " + trimmedPath );
 });
-server.listen("3000",()=>{
+server.listen("3000",function(){
     console.log("your server is working property now run your server execution!");
 })
