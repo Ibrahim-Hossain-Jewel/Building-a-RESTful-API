@@ -16,7 +16,9 @@ const server = http.createServer(function(req,res ){
     const trimmedPath = path.replace(/^\/+|\/+$/g, '');
     //Now parse the HTTP Method here.
     const method = req.method.toLowerCase();
-    console.log('Your client pathname is : ' + trimmedPath + " And your method is " + method );
+    //Now parsing query string here.
+    const parsingQueryString = JSON.stringify(parseUrl.query);
+    console.log('Your client pathname is : ' + trimmedPath + " And your method is " + method + " along with the parsing query string is : " + parsingQueryString);
     res.end("Welcome to our uptime monitoring application" );
     
 });
